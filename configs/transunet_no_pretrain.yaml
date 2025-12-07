@@ -1,0 +1,56 @@
+name: transunet_no_pretrain
+transform:
+  resized_imaged:
+    size: [384, 512]
+dataset:
+  data_dir: dataset/train
+  has_label: true
+  train_split: 0.8
+  random_seed: 42
+train_dataset:
+  data_dir: dataset/train
+  has_label: true
+valid_dataset:
+  data_dir: dataset/train
+  has_label: true
+data_augmentation:
+  brightness_factor_range: [0.9, 1.1]
+  contrast_factor_range: [0.9, 1.1]
+  rotation_degrees: 10
+  noise_std: 0.01
+  crop_size: [384, 512]
+train_loader:
+  batch_size: 8
+  num_workers: 2
+  shuffle: true
+valid_loader:
+  batch_size: 1
+  num_workers: 2
+  shuffle: false
+model:
+  type: TransUNet
+  img_size: [384, 512]
+  in_channels: 1
+  num_classes: 1
+  vit_embed_dim: 384
+  vit_depth: 8
+  vit_num_heads: 6
+  vit_mlp_ratio: 3
+  vit_dropout: 0.1
+optimizer:
+  type: AdamW
+  lr: 0.0001
+  weight_decay: 0.0001
+lr_scheduler:
+  type: WarmupReduceLROnPlateau
+  warmup_epochs: 5
+  warmup_start_lr: 1e-6
+  mode: max
+  factor: 0.5
+  patience: 5
+trainer:
+  n_epoch: 150
+  early_stopping_patience: 25
+checkpoint:
+  path: transunet_best.pth
+
