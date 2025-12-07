@@ -1,0 +1,42 @@
+name: simclr
+
+transform:
+  resized_imaged:
+    size: [448, 576]
+
+dataset:
+  data_dir: dataset/train
+  has_label: false 
+  train_split: 1.0
+  random_seed: 42
+
+
+train_loader:
+  batch_size: 8
+  num_workers: 2
+  shuffle: true
+
+model:
+  type: SimCLR
+  img_size: [448, 576]
+  in_channels: 1
+  vit_embed_dim: 768
+  resnet_pretrained: true
+  projection_dim: 128
+
+optimizer:
+  type: AdamW
+  lr: 0.0003        
+  weight_decay: 0.000001 
+
+lr_scheduler:
+  type: WarmupCosine
+  warmup_epochs: 10      
+  max_epochs: 100
+
+trainer:
+  n_epoch: 100 
+  temperature: 0.5
+
+checkpoint:
+  path: simclr_pretrained_encoder.pth
