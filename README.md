@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/uOK6onxy)
-# ML Assignment 3: Medical Image Segmentation
+# Medical Image Segmentation
 
-This repository contains the implementation for Assignment 3 of the Machine Learning (CSIE5043) course, Fall 2025, at National Taiwan University. The goal of this assignment is to develop and evaluate segmentation models for medical images using different neural network architectures and training strategies.
+The goal of this assignment is to develop and evaluate segmentation models for medical images using different neural network architectures and training strategies.
 
 
 ## 🧩 Setup
